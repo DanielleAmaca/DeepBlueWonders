@@ -1,0 +1,595 @@
+<html lang="eng">
+<title>Website</title>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Website with Interactive Cards</title>
+        <style>
+            /* width */
+            ::-webkit-scrollbar {
+              width: 0px;
+            }
+
+            body {
+    opacity: 0;
+    animation: fadeIn 1.5s forwards; /* Apply fade-in effect */
+}
+
+
+/* Keyframes for the fade-in effect */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+    body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+      .view {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .block {
+        height: 200px;
+        width: 300px;
+        margin: 50px;
+        border: 0.5mm solid black;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      }
+      .block:nth-child(1) {
+        background-image: url(k22.jpg)
+      }
+      .block:nth-child(2) {
+        background-image: url(k6.jpg);
+      }
+      .block:nth-child(3) {
+        background-image: url(bg44.jpg);
+      }
+      .block:nth-child(4) {
+        background-image: url(b1.jpg);
+        width: 700px;
+      }
+      .block:nth-child(5) {
+        background-image: url(bg5.jpg);
+      }
+      .block:nth-child(6) {
+        background-image: url(reef.jpg);
+      }
+      .block:nth-child(7) {
+        background-image: url(b2.jpg);
+        background-size: cover;
+      }
+      .block:nth-child(8) {
+        background-image: url(wv.jpg);
+        width: 700px;
+      }
+      .block:nth-child(9) { 
+        background-image: url(sish1.jpeg);
+        background-size: cover;
+      }
+      .block:nth-child(10) {
+        background-image: url(b3.png);
+        width: 700px;
+      }
+      .block:nth-child(11) {
+        background-image: url(b4.jpg);
+        background-size: cover;
+      }
+      .block:nth-child(12) {
+        background-image: url(oct.jpg);
+        background-size: cover;
+      }
+      .block:nth-child(13) {
+        background-image: url(hh.jpg);
+        background-size: cover;
+      }
+      .block:nth-child(14) {
+        background-image: url(seahor.avif);
+        background-size: cover;
+      }
+      .block:nth-child(15) {
+        background-image: url(shark.avif);
+        background-size: cover;
+      }
+      .block:nth-child(16) {
+        background-image: url(b6.jpg);
+        width: 850px;
+      }
+      .block:nth-child(17) {
+        background-image: url(k4.jpg);
+      }
+      .block:nth-child(18) {
+        background-image: url(mantis-shrimp.webp);
+        background-size: cover;
+      }
+      .block:nth-child(19) {
+        background-image: url(crab.avif);
+        background-size: cover;
+      }
+      .block:nth-child(20) {
+        background-image: url(nemo.jpg);
+        width: 600px;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          clip-path: inset(100% 100% 0 0);
+        }
+        to {
+          opacity: 1;
+          clip-path: inset(0 0 0 0);
+        }
+      }
+
+      .block {
+        animation: appear linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+      }
+ 
+            ul {
+              list-style-type: none;
+              margin-top: 10px;
+              padding: 0;
+              overflow: hidden;
+              position: fixed;
+              top: 0;
+              width: 100%;
+              z-index: 9999;
+            }
+           
+            li {
+              float: right;
+            }
+           
+            li a {
+              display: block;
+              color: #ffffff;
+              text-align: center;
+              font-size: small;
+              padding: 10px 30px;
+              text-decoration: none;
+            }
+           
+            li a:hover:not(.active) {
+              color: rgb(255, 255, 255);
+              border-bottom: .2rem solid;
+              border-bottom-color: rgba(255, 255, 255, 0.61);
+              padding-bottom: .5rem;
+            }
+           
+            .active {
+              color: rgb(255, 255, 255);
+              border-bottom: .2rem solid;
+              border-bottom-color: rgb(255, 255, 255);
+              padding-bottom: .5rem;
+            }  
+
+            .dropdown {
+            display: inline-block;
+            position: fixed;
+            }
+
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              margin-left: 15px;
+              background-color: #f9f9f9;
+              min-width: 200px;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+
+            .dropdown-content a {
+              color: #086c8d;
+              padding: 12px 20px;
+              text-decoration: none;
+              display: block;
+              text-align: left;
+            }
+
+            .dropdown-content a:hover {
+              background-color: #bbbbbb;
+              border: none;
+            }
+
+            .dropdown:hover .dropdown-content {
+              color: black;
+              display: block;          
+            }
+
+
+            h1 {
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 60;
+              color: white;
+              text-shadow: 4px 4px 8px rgb(0, 0, 0);
+              text-align: center;
+              margin-top: 200px;
+              margin-bottom: none;
+              height: 20px;
+            }
+
+            h2 {
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 30;
+              color: white;
+              margin-top: 30px;
+              text-shadow: 2px 2px 5px rgb(0, 0, 0);
+              text-align: center;
+            }
+
+            .button {
+              display: inline-block;
+              border-radius: 50px;
+              background-color: #f4501e00;
+              border: 2px solid white;
+              color: #FFFFFF;
+              text-align: center;
+              font-size: 15px;
+              padding: 10px;
+              width: 170px;
+              transition: all 0.5s;
+              cursor: pointer;
+              justify-content: center;
+              position: relative;
+              top: 5%;
+              left: 50%;
+              -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+            }
+
+            .button span {
+              cursor: pointer;
+              display: inline-block;
+              position: relative;
+              transition: 0.5s;
+            }
+
+            .button span:after {
+              content: '\00bb';
+              position: absolute;
+              opacity: 0;
+              top: 0;
+              right: -20px;
+              transition: 0.5s;
+            }
+
+            .button:hover span {
+              padding-right: 25px;
+            }
+
+            .button:hover span:after {
+              opacity: 1;
+              right: 0;
+            }
+
+            .container {
+            display: flex;
+            gap: 30px;
+            margin-top: 100px; 
+            flex-wrap: wrap;
+            justify-content: center;
+            }
+
+            .card {
+            width: 50px;
+            height: 300px;
+            border-radius: 2rem;
+            background-size: cover;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            box-shadow: 0px 20px 40px 5px rgba(0, 0, 0, 0.8);
+            z-index: 3;
+            }
+
+            .card.expanded {
+              width: 400px;
+            }  
+
+            .card-content {
+                color: white;
+                padding: 15px;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                z-index: 2;
+            }
+
+            .card.expanded .card-content {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .card:nth-child(1) {
+                background-image: url(bamboo\ shark.gif);
+            }
+
+            .card:nth-child(2) {
+                background-image: url(blue\ whale.gif);
+            }
+
+            .card:nth-child(3) {
+                background-image: url(bottlenose\ dolphins.gif);
+            }
+
+            .card:nth-child(4) {
+                background-image: url(dugong.gif);
+            }
+
+            .card:nth-child(5) {
+                background-image: url(dwarf\ sperm\ whale.gif);
+            }
+
+            .card:nth-child(6) {
+                background-image: url(a.gif);
+            }
+
+            .card:nth-child(7) {
+                background-image: url(flamboyant\ cuttlefish.gif);
+            }
+
+            .card:nth-child(8) {
+                background-image: url(lana_s\ sawshark.gif);
+            }
+
+            .card:nth-child(9) {
+                background-image: url('Dive\ sites\ around\ Marsa\ Alam\ \(Egypt\)\ in\ the\ Red\ Sea_.gif');
+            }
+
+            .card:nth-child(10) {
+                background-image: url('snowflake\ moray\ eel.gif');
+            }
+
+            a {
+              color: #eeeeea;
+              text-decoration: none; 
+            }
+
+
+            
+        </style>
+        
+    </head>
+
+    <body background="1.jpg" style="background-repeat: no-repeat;background-size: cover; background-position: center; background-attachment: fixed;">
+      <ul><b>
+              <li style="float: left; margin-left: 50px;">
+                <img src="logo.png" style="height: 50px; ">
+              </li>
+      </b></ul>
+
+      <ul><b>
+              <li><a href="moot1.html">LEARN MORE</a></li>
+              <li><a  href="noot.html">ABOUT</a></li>
+              <li><a class="active" href="home.html">HOME</a></li>
+              <li style="float: left; margin-top: 10px;" class="dropdown">
+            <div class="dropdown">
+              <img src="bar.png" style="width: 40px; margin-top: 0; margin-left: 5px;" class="dropbtn"></a>
+              <div class="dropdown-content">
+                <p style="margin-left: 9px; margin-right: 9px;">Philippine Sea Creatures</p>
+                <a href="bamboo.html">Bamboo Shark</a>
+                <a href="blue.html">Blue Whale</a>
+                <a href="dolphine.html">Bottle nose Dolphins</a>
+                <a href="dugong.html">Dugong</a>
+                <a href="dwarf.html">Dwarf Sperm Whale</a>
+                <a href="eagly ray (1).html">Eagle Ray</a>
+                <a href="flamboyant.html">Flamboyant Cuttlefish</a>
+                <a href="lana.html">Lana’s Sawshark</a>
+                <a href="moorish.html">Moorish Idol</a>
+                <a href="snowflake.html">Snowflake Moray Eel</a>              
+              </div>
+            </div>
+        </li>
+      </ul></b>
+            
+            <h1>DEEP BLUE WONDERS</h1>
+            <h2>Philippine Sea Creatures</h2>
+
+            <p style="margin-left: 180px; margin-right: 180px; color: rgb(255, 255, 255); text-align: center; text-shadow: #000000 1px 1px;">
+              Deep Blue Wonders is an informative  website that displays the Philippines' incredible
+              underwater life. There are gorgeous galleries and informative tools to learn about the many traits and 
+              habitats of marine life inThe Philippines is regarded for being the heart of the coral triangle. 
+              From stunning coral reefs packed with colorful fish and countless fascinating deep-sea creatures lurk in the ocean. 
+              Deep Blue Wonders is full of
+              Interactive tools, extensive species information, and appealing photos that provide
+              An exciting method to learn about the Philippines' aquatic biodiversity. 
+
+            </p>
+      </div>                   
+    </body>
+
+    <body>
+      <button class="button" style="vertical-align:middle; transition: smooth;">
+        <a href="#section3">
+          <span style="color:white;">Start Learning</span></button>
+        </a>
+      </div>
+    </body>
+<br><br><br><br><br><br><br><br>
+
+    <section ID="section2">
+    </style>
+  </head>
+  <body>
+    <div class="view">
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block">
+        <p style="text-align: center; font-size: 25px; color: #ffffff; text-shadow: 2px 1px 5px #000000;  margin-left: 30px; margin-right: 30px; margin-top: 35px;">
+        Did you know?
+
+         The Philippine has a deepest trench at 34,578 feet (10,539 metres)
+        </p></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block">
+        <p style="text-align: center; font-size: 20px; color: #ffffff; text-shadow: 2px 1px 5px #000000; margin-left: 30px; margin-right: 30px; margin-top: 35px;"> 
+          The marine life in the Philippines is overwhelmingly beautiful. Made up of more than 7,641 islands and located in the nutrient-rich Coral Triangle, the Philippines is home to an astounding number of marine creatures. World War II wrecks, steep drop-offs and tropical caves house colourful hard and soft corals as well as thousands of fantastical fish species. 
+         </p></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"> 
+       <p style="text-align: center; font-size: 25px; color: #ffffff; text-shadow: 2px 1px 5px #000000;  margin-left: 30px; margin-right: 30px; margin-top: 35px;"> 
+        There are approximately 500 species of coral in the coastal water of the Philippine Sea.
+      </p></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block">
+        <p style="text-align: center; font-size: 25px; color: #ffffff; text-shadow: 2px 1px 5px #000000;  margin-left: 30px; margin-right: 30px; margin-top: 55px;"> 
+          The Philippine Sea is one of the best places in the world to see the whale shark, considered a gentle giant, which is the largest fish in the sea. Divers often report seeing specimens at over 10 meters long.
+      </p></div>
+      <div class="block">
+        <p style="text-align: center; font-size: 25px; color: #ffffff; text-shadow: 2px 1px 5px #000000;  margin-left: 30px; margin-right: 30px; margin-top: 30px;"> 
+          Approximately 20% of the known shellfish species in the world are found in the waters of the Philippine Sea.
+      </p></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+    </div>
+  </body>
+
+<section ID="section3">
+    <body>
+    <h2 style="margin-top: 20%;"> CLICK THE CARDS TO EXPLORE</h2>
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;">
+                    They only grow to about 37 inches in length, and are harmless to humans!</p>
+                <a href="bamboo.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Bamboo Shark</H1></a>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                  The Bohol Sea is the only known area in the country where blue whales have been positively identified.
+                </p>      
+                <a href="blue.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Blue Whale</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                Common bottlenose dolphins get their name from their short, thick snout (or rostrum).</p>
+                <a href="dolphine.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Bottlenose Dolphins</h1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                They eat seagrass and are found only in areas where these grow, making them very vulnerable to human activities living very close to the shore.</p>
+                <a href="dugong.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Dugong</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                Dwarf sperm whales can dive at least 1,000 feet when pursuing prey, and possibly even deeper.</p>
+                <a href="dwarf.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Dwarf Sperm Whale</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                These rays have a curious and prominent snout or nose that they use to stir up sandy bottoms and extract their prey from their hiding places.</p>
+                <a href="eagly ray (1).html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Eagle Ray</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                The flamboyant cuttlefish is part of the caviidae family with squid, octopus, and chambered nautilus as its relatives.</p>
+                <a href="flamboyant.html"><h1 style="text-decoration: underline; font-size: 38; margin-bottom: 30;">Flamboyant Cuttlefish</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                Lana's sawshark or the Philippine sawshark, is a sawshark of the family Pristiophoridae.</p>
+                <a href="lana.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Lana’s Sawshark</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                Known for its appearance in the animated movie Finding Nemo, the Moorish idol is another common sea creature you’d run into in the Philippines.</p>
+                <a href="moorish.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Moorish Idol</H1></a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+              <p style="text-align: center; font-family: 'Times New Roman', Times, serif;text-shadow: 0px 2px 2px#000000; height: 20;font-size: 150%;"> 
+                This moray eels eat their prey in a unique way – with two jaws.</p>
+                <a href="snowflake.html"><h1 style="text-decoration: underline; font-size: 40; margin-bottom: 30;">Snowflake Moray Eel</H1></a>
+            </div>
+        </div>
+    </div> 
+    <script>
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach((card) => {
+            card.addEventListener('click', () => {
+                const isExpanded = card.classList.contains('expanded');
+
+  
+                cards.forEach((c) => c.classList.remove('expanded'));
+
+                if (!isExpanded) {
+                card.classList.add('expanded');
+                    }
+            });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      const duration = 8000; 
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      const startPosition = window.scrollY;
+      const distance = targetPosition - startPosition;
+      let startTime = null;
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+      function ease(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+      }
+
+      requestAnimationFrame(animation);
+    }
+  });
+});
+
+    </script>
+    <br><br><br><br><br><br><br>
+
+</html>
